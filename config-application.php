@@ -49,7 +49,7 @@ $configFrontendMobileDefaultView = "frontend_php_mobile";
 
 //DB especial configuration.
 //----------------------
-$configSystemDBTablePrefix = "prefix_ssmv1_";
+$configSystemDBTablePrefix = "r2_tbl_";
 $configSystemDBType = 2; //2 - MySQL | 3 - SQL Server
 $enableSystemDBSizeOptimize = 0; //0-disable (all fields created) | 1-enable (only enabled fields created on database setup)
 
@@ -63,9 +63,9 @@ $configSystemDBTableContent = "content";
 $configSystemDBTableProducts = "products";
 $configSystemDBTablePublications = "publications";
 $configSystemDBTableRegisters = "registers";
-$configSystemDBTableQuizzes = "quizzes";
-$configSystemDBTableQuizzesOptions = "quizzes_options";
-$configSystemDBTableQuizzesLog = "quizzes_log";
+$configSystemDBTableQuizzes = "questions";
+$configSystemDBTableQuizzesOptions = "questions_options";
+$configSystemDBTableQuizzesLog = "questions_log";
 $configSystemDBTableForms = "forms";
 $configSystemDBTableFormsFields = "forms_fields";
 $configSystemDBTableFormsFieldsOptions = "forms_fields_options";

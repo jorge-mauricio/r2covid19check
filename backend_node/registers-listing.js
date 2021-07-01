@@ -784,7 +784,7 @@ module.exports = class RegistersListing
                                         ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersRegister") }  
                                     </td>
 
-                                    <td style="width: 100px; text-align: center;">
+                                    <td style="width: 100px; text-align: center; display: none;">
                                         ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemFunctions") }  
                                     </td>
 
@@ -912,7 +912,7 @@ module.exports = class RegistersListing
                                                 `
                                                 <div>
                                                     <strong>
-                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersNameFull") }
+                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersNameFull") }:
                                                     </strong>
                                                     ${ SyncSystemNS.FunctionsGeneric.contentMaskRead(registersRow.name_full, "db") } 
                                                 </div>
@@ -923,7 +923,7 @@ module.exports = class RegistersListing
                                                 `
                                                 <div>
                                                     <strong>
-                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersNameFirst") }
+                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersNameFirst") }:
                                                     </strong>
                                                     ${ SyncSystemNS.FunctionsGeneric.contentMaskRead(registersRow.name_first, "db") } 
                                                 </div>
@@ -934,7 +934,7 @@ module.exports = class RegistersListing
                                                 `
                                                 <div>
                                                     <strong>
-                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersNameLast") }
+                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersNameLast") }:
                                                     </strong>
                                                     ${ SyncSystemNS.FunctionsGeneric.contentMaskRead(registersRow.name_last, "db") } 
                                                 </div>
@@ -945,7 +945,7 @@ module.exports = class RegistersListing
                                                 `
                                                 <div>
                                                     <strong>
-                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersCompanyNameLegal") }
+                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersCompanyNameLegal") }:
                                                     </strong>
                                                     ${ SyncSystemNS.FunctionsGeneric.contentMaskRead(registersRow.company_name_legal, "db") } 
                                                 </div>
@@ -956,15 +956,26 @@ module.exports = class RegistersListing
                                                 `
                                                 <div>
                                                     <strong>
-                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersCompanyNameAlias") }
+                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendRegistersCompanyNameAlias") }:
                                                     </strong>
                                                     ${ SyncSystemNS.FunctionsGeneric.contentMaskRead(registersRow.company_name_alias, "db") } 
                                                 </div>
                                                 ` : ``
                                             }
+
+                                            ${ gSystemConfig.enableRegistersEmail == 1 ? 
+                                                `
+                                                <div>
+                                                    <strong>
+                                                        ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemEmail") }:
+                                                    </strong>
+                                                    ${ SyncSystemNS.FunctionsGeneric.contentMaskRead(registersRow.email, "db") } 
+                                                </div>
+                                                ` : ``
+                                            }
                                         </td>
 
-                                        <td style="text-align: center;">
+                                        <td style="text-align: center; display: none;">
                                             ${ /*SyncSystemNS.FunctionsGeneric.categoryConfigSelect(registersRow.category_type, 4)*/'' }
                                             
                                             <a href="/${ gSystemConfig.configRouteBackend + "/" + gSystemConfig.configRouteBackendRegisters + "/" + gSystemConfig.configRouteBackendDetails + "/" + registersRow.id + "/" }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">

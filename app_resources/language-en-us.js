@@ -8,14 +8,14 @@ Notes:
 exports.appLabels = {
     //Config.
     //**************************************************************************************
-    configSiteTile: "SyncSystem - Multiplatform (debug: çáéã)",
-    configSiteDescription: "Description example.",
-    configSiteKeywords: "keywords or key terms, separated by, commas",
+    configSiteTile: "Rad Square - COVID-19 Check",
+    configSiteDescription: "Automated inquiry to certify that the user is Covid-19 free and, therefore, can access the restricted area.",
+    configSiteKeywords: "",
 
     configFrontendLanguage: "en_US", // en_US | pt_BR
 
     layoutSystemName: "Content Management System", //Sistema de Gerenciamento de Conteúdo
-    layoutDevName: "Planejamento Visual - Arte e Tecnologia", //Planejamento Visual - Arte e Tecnologia
+    layoutDevName: "Rad Square", //Planejamento Visual - Arte e Tecnologia | Jorge Mauricio - Full Stack Web Developer
     //**************************************************************************************
 
 
@@ -292,7 +292,7 @@ exports.appLabels = {
     backendCategoriesType9Function: "Segment", /*Manage Categories */
     backendCategoriesType12Function: "Manage Forms",
     backendCategoriesType13Function: "Manage Registers",
-    backendCategoriesType17Function: "Manage Quizzes",
+    backendCategoriesType17Function: "Manage Questions",
     //**************************************************************************************
 
 
@@ -814,7 +814,7 @@ exports.appLabels = {
     backendRegistersWeight: "Weight",
     
     backendRegistersDocumentType: "Document Type",
-    backendRegistersDocument: "Document",
+    backendRegistersDocument: "Nº Crachá",
     backendRegistersDocument1Type: "Document 1 Type",
     backendRegistersDocument1: "Document 1",
     backendRegistersDocument2Type: "Document 2 Type",
@@ -833,7 +833,7 @@ exports.appLabels = {
     backendRegistersLocationReference: "Location Reference",
     backendRegistersLocationMap: "Map",
 
-    backendRegistersPhone1: "Phone 1",
+    backendRegistersPhone1: "Cell Phone",
     backendRegistersPhone2: "Phone 2",
     backendRegistersPhone3: "Phone 3",
     backendRegistersUsername: "Username",
@@ -979,18 +979,18 @@ exports.appLabels = {
 
     //Quizzes.
     //**************************************************************************************
-    backendQuizzesTitleMain: "Quizzes",
-    backendQuizzesTitleEdit: "Edit Quizzes",
-    backendQuizzesTitleDetails: "Quizzes Details",
-    backendQuizzesTitleTable: "Include Quizzes",
-    backendQuizzesTitleTableInsert: "Include Quiz",
-    backendQuizzesTitleTableEdit: "Edit Quiz",
-    backendQuizzesTitleTableDetails: "Quiz Details",
+    backendQuizzesTitleMain: "Questions",
+    backendQuizzesTitleEdit: "Edit Questions",
+    backendQuizzesTitleDetails: "Questions Details",
+    backendQuizzesTitleTable: "Include Questions",
+    backendQuizzesTitleTableInsert: "Include Question",
+    backendQuizzesTitleTableEdit: "Edit Question",
+    backendQuizzesTitleTableDetails: "Question Details",
 
     backendQuizzesType: "Type",
         backendQuizzesType1: "Poll",
             backendQuizzesType1A: "P",
-        backendQuizzesType2: "Quiz",
+        backendQuizzesType2: "Question",
             backendQuizzesType2A: "Q",
         backendQuizzesType3: "Answer",
             backendQuizzesType3A: "A",
@@ -1054,7 +1054,7 @@ exports.appLabels = {
     frontendQuizzesAnswerWrong: "Your answer is wrong.",
 
     //Frontend - ADM.
-    frontendQuizzesDashboardInstructions01: "Fill in the fields below and include a quiz.",
+    frontendQuizzesDashboardInstructions01: "Fill in the fields below and include a question.",
     //**************************************************************************************
 
 

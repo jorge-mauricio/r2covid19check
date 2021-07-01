@@ -2,9 +2,9 @@
 //DB System.
 //**************************************************************************************
 $dbSystemHost = "192.175.105.180";
-$dbSystemDataBase = "dev_db_ss_multiplatformv1";
-$dbSystemUser = "usuario_dev";
-$dbSystemPassword = "juNh#1803";
+$dbSystemDataBase = "rel_db_r2";
+$dbSystemUser = "radsquare";
+$dbSystemPassword = "fEli#3006";
 
 
 //PDO - Connection for various types of data bases.
