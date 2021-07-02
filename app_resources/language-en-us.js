@@ -15,7 +15,7 @@ exports.appLabels = {
     configFrontendLanguage: "en_US", // en_US | pt_BR
 
     layoutSystemName: "Content Management System", //Sistema de Gerenciamento de Conteúdo
-    layoutDevName: "Rad Square", //Planejamento Visual - Arte e Tecnologia | Jorge Mauricio - Full Stack Web Developer
+    layoutDevName: "Jorge Mauricio - Full Stack Web Developer", //Planejamento Visual - Arte e Tecnologia | Jorge Mauricio - Full Stack Web Developer
     //**************************************************************************************
 
 
@@ -163,7 +163,7 @@ exports.appLabels = {
     backendButtonSave: "Save",
     backendButtonClose: "Close",
     backendButtonReset: "Reset",
-    backendButtonStart: "Start",
+    backendButtonStart: "Access to Application",
     backendButtonFinish: "Finish",
     backendButtonLogin: "Login",
     backendButtonLoginRemind: "Remind Password",
@@ -1315,7 +1315,7 @@ exports.appLabels = {
 
     //Frontend - Home.
     //**************************************************************************************
-    frontendHomeTitleMain: "Home",
+    frontendHomeTitleMain: "COVID-19 Check",
     //**************************************************************************************
 
 

@@ -39,8 +39,9 @@ if (typeof window !== 'undefined') {
 //import FrontendCategoriesListingRecord from "./frontend-categories-listing-record-cb-component.jsx";
 //import FrontendCategoriesListingRecord from "./frontend-categories-listing-record-cb-component.js";
 //import FrontendBanners from "./frontend-banners-cb-component.js";
-import FrontendProducts from "./frontend-products-cb-component.js";
+//import FrontendProducts from "./frontend-products-cb-component.js";
 import FrontendContent from "./frontend-content-cb-component.js";
+import FrontendLoginForm from "./frontend-login-form-cb-component.js";
 //----------------------
 
 
@@ -473,7 +474,7 @@ class FrontendHome extends Component
         //elementMessage01("titleCurrent", this.titleCurrent); //working
         //console.log("FunctionsSyncSystem=", FunctionsSyncSystem);
         FunctionsSyncSystem.elementMessage01("titleCurrent", this.titleCurrent);
-        FunctionsSyncSystem.elementMessage01("titleCurrentMobile", this.titleCurrent);
+        //FunctionsSyncSystem.elementMessage01("titleCurrentMobile", this.titleCurrent);
     }
     //**************************************************************************************
     
@@ -516,81 +517,30 @@ class FrontendHome extends Component
         //Output.
         return(
             <React.Fragment>
-                <React.Fragment>
-                    { /*div layout (custom). */}
-                    { this.configLayoutType == 1 ?
-                        <React.Fragment>
-                            <section className="ss-frontend-layout-section-content01">
-                                home content
-                            </section>
-                        </React.Fragment>
-                    :``
-                    }
-
-
-                    { /*div layout (bootstrap). */}
-                    { this.configLayoutType == 11 ?
-                        <section className="container">
-                            <div className="alert alert-success" role="alert" style={{textAlign: "center"}}>
-                            </div>
-
-                            bootstrap
-                        </section>
-                    :``
-                    }
-
-
-                    { /*div layout (responsive). */}
-                    { this.configLayoutType == 111 ?
-                        <React.Fragment>
-                            { /*Desktop */}
-                            <div className="d-none d-lg-block d-xl-block"> { /*Note: If the content is not complex, these parameters can be incorporate to the section tag.*/}
-                                <section className="ss-frontend-layout-section-content01 ss-frontend-text01">
-                                    home content desktop
-                                </section>
-                            </div>
-
-
-                            { /*Mobile */}
-                            <div className="d-lg-none">
-                                <section class="ss-frontend-mobile-layout-section-content01 ss-frontend-text01">
-                                    home content mobile
-                                </section>
-                            </div>
-                        </React.Fragment>
-                    :``
-                    }
-                </React.Fragment>
-
-
                 { /*Content component.*/ }
-                <FrontendContent 
-                    idParentContent={ "106" } 
-                    idTbContent={ "" } 
-                    contentType={ "" } 
-                    configLayoutType={ 2 } 
-                    configContentNRecords={ "" } 
-                    configContentSort={ "" }>
-                        {/*arrCategoriesListing={ this.arrCategoriesListing } also works*/}
-                </FrontendContent>
+                <section className="ss-frontend-layout-section-content01">
+                    <FrontendContent 
+                        idParentContent={ "106" } 
+                        idTbContent={ "" } 
+                        contentType={ "" } 
+                        configLayoutType={ 2 } 
+                        configContentNRecords={ "" } 
+                        configContentSort={ "" }>
+                            {/*arrCategoriesListing={ this.arrCategoriesListing } also works*/}
+                    </FrontendContent>
+                </section>
 
-
-                { /*Products component. */}
-                <FrontendProducts
-                    idParentProducts={"960"} 
-                    idRegisterUser={""} 
-
-                    configLayoutType={2} 
-                    configProductsNRecords={"3"} 
-                    configProductsSort={gSystemConfig.configProductsSort} 
-
-                    activation={1} 
-                    activation1={""} 
-                    activation2={""} 
-                    activation3={""} 
-                    activation4={""} 
-                    activation5={""}>
-                </FrontendProducts>
+                <section className="ss-frontend-layout-section-content01" style={{marginTop: "50px"}}>
+                    { /*Login form component.*/
+                    <FrontendLoginForm 
+                        configLayoutType={ this.configLayoutType } 
+                        configLoginOrigin={ "1" } 
+                        configLoginReturnURL={ "" }
+                        configLoginIDReturnURL={ "" } 
+                        history={this.props.history} //Child components don´t have props.history by default, so you need to pass as a prop.
+                        >
+                    </FrontendLoginForm> }
+                </section>
             </React.Fragment>
         );
     }

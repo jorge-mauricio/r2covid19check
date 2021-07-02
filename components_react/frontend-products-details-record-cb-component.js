@@ -154,7 +154,7 @@ class FrontendProductsDetailsRecord extends Component
         //Variables.
         //----------------------
         //const { gSystemConfig, FunctionsGeneric, FunctionsCrypto } = this.context;
-        const { gSystemConfig, SyncSystemNS, FunctionsSyncSystem,  HTMLReactParser } = this.context;
+        const { gSystemConfig, SyncSystemNS, FunctionsSyncSystem, HTMLReactParser } = this.context;
         var configLayoutType = null;
         var objProductsDetails;
         //----------------------

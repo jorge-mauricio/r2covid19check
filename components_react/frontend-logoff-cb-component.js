@@ -350,7 +350,7 @@ class FrontendLogoff extends Component
     render()
     {
         //Variables.
-        const { gSystemConfig, SyncSystemNS, FunctionsSyncSystem, qs } = this.context;
+        const { gSystemConfig, SyncSystemNS, FunctionsSyncSystem, qs, HTMLReactParser } = this.context;
 
 
         //Check if data is loaded.
@@ -374,7 +374,7 @@ class FrontendLogoff extends Component
         return(
             <section className="ss-frontend-layout-section-content01">
                 <div className="ss-frontend-login-text-success" style={{textAlign: "center"}}>
-                    {SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendLogoffMessage01")}
+                    { HTMLReactParser(SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendLogoffMessage01")) }
                 </div>
             </section>
         );

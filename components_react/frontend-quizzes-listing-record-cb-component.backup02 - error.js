@@ -17,7 +17,7 @@ import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router";
 
 //Components.
-import FrontendContent from "./frontend-content-cb-component.js";
+//import FrontendContent from "./frontend-content-cb-component.js";
 //----------------------
 
 
@@ -91,12 +91,10 @@ class FrontendQuizzesListingRecord extends Component
             if(this.idTbRegistersLogged == "")
             {
                 //Redirect.
-                this.props.history.push("/" + gSystemConfig.configRouteFrontendLogin +"/?messageAlert=statusMessageLogin1a"); //it may be getting from history cache
+                //this.props.history.push("/" + gSystemConfig.configRouteFrontendLogin +"/?messageAlert=statusMessageLogin1a"); //it may be getting from history cache
                 //return (<Redirect to={"/" + gSystemConfig.configRouteFrontendLogin +"/?messageAlert=statusMessageLogin1a"}  />);
             }
 
-            //Show first question.
-            FunctionsSyncSystem.htmlGenericStyle01('divQuiz0', 'display', 'block');
 
 
             //Main build.
@@ -191,8 +189,6 @@ class FrontendQuizzesListingRecord extends Component
         let quizAnswerStatus = false;
         let tblQuizzesID = "";
         let divQuizID = "";
-
-        let quizCheck = true;
         //----------------------
 
 
@@ -210,8 +206,6 @@ class FrontendQuizzesListingRecord extends Component
         {
             quizAnswerStatus = true;
             countQuizAnswersRight++;
-        }else{
-            quizCheck = false;
         }
 
         //Insert log in array.
@@ -241,15 +235,6 @@ class FrontendQuizzesListingRecord extends Component
         {
             //Show results.
             FunctionsSyncSystem.htmlGenericStyle01('divQuizResultsLog', 'display', 'block');
-            if(quizCheck === false)
-            {
-                FunctionsSyncSystem.htmlGenericStyle01('divError', 'display', 'block');
-            }else{
-                FunctionsSyncSystem.htmlGenericStyle01('divSuccess', 'display', 'block');
-
-                //Set cookie check.
-                FunctionsSyncSystem.cookieCreate(gSystemConfig.configCookiePrefix + "_" + "quizCheck", "true",  gSystemConfig.configCookieDefaultOptions);
-            }
 
 
             //Record log.
@@ -440,24 +425,76 @@ class FrontendQuizzesListingRecord extends Component
                 //Output.
                 return(
                     <React.Fragment>
-                        { arrQuizzesListing.map((quizzesRow, quizzesRowKey) =>{
-                            return (
-                                <article id={"divQuiz" + quizzesRowKey} key={quizzesRowKey} 
-                                    className="ss-frontend-quizzes-listing-container" 
-                                    style={{display: "none"}}>
-
-                                    <div className="ss-frontend-quizzes-container ss-frontend-quizzes-listing-text01">
+                        <div id={"divQuizStart"}>
+                            <button 
+                                onClick={()=>{
+                                    //FunctionsSyncSystem.htmlGenericStyle01('divQuiz' + arrQuizzesListing[0].id, 'display', 'block');
+                                    FunctionsSyncSystem.htmlGenericStyle01('divQuiz0', 'display', 'block');
+                                    FunctionsSyncSystem.htmlGenericStyle01('divQuizStart', 'display', 'none');
+                                }}
+                                className="ss-frontend-btn-base ss-frontend-btn-action">
+                                { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "backendButtonStart") }test
+                            </button>
+                        </div>
+                        
+                        <div className="ss-frontend-quizzes-listing-container">
+                            { arrQuizzesListing.map((quizzesRow, quizzesRowKey) =>{
+                                return (
+                                    <article id={"divQuiz" + quizzesRowKey} key={quizzesRowKey} 
+                                            className="ss-frontend-quizzes-container ss-frontend-quizzes-listing-text01"
+                                            style={{display: "none"}}>
+                                        <h2 className="ss-frontend-quizzes-listing-title01">
+                                            <a href={"/" + gSystemConfig.configRouteFrontendQuizzes + "/" + gSystemConfig.configRouteFrontendDetails + "/" + quizzesRow.id} 
+                                                className="ss-frontend-quizzes-listing-title-link01"
+                                                title={ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "backendItemDetails") }>
+                                                { /*quizzesRow.title*/ }
+                                                { /*SyncSystemNS.FunctionsGeneric.contentMaskRead(quizzesRow.category, "db")*/ }
+                                                { /*HTMLReactParser(quizzesRow.category)*/ }
+                                                { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "backendItemDetails") }:
+                                            </a>
+                                        </h2>
                                         <p className="ss-frontend-quizzes-listing-content-row01">
+                                            { /*SyncSystemNS.FunctionsGeneric.contentMaskRead(quizzesRow.question, "db")*/ }
+                                            { /*JSON.parse(quizzesRow.question)*/ }
+                                            { /*HTMLReactParser(quizzesRow.question)*/ }
                                             { HTMLReactParser(SyncSystemNS.FunctionsGeneric.contentMaskRead(quizzesRow.title, "db")) }
+                                            
                                         </p>
-                                    </div>
 
-                                    { /*Options (multiple) - store in DB.*/ }
-                                    <div className="ss-frontend-quizzes-listing-content-row01">
-                                        { quizzesRow.quizzesOptions.map((quizzesOptionsRow, quizzesOptionsRowKey) =>{
-                                            return (
-                                                    <div key={quizzesOptionsRowKey} 
-                                                        style={{textAlign: "center", marginBottom: "15px"}}>
+                                        { /*Options (true/false) - store in memory.*/ }
+                                        <div className="ss-frontend-quizzes-listing-content-row01">
+                                            <a onClick={() => this.handleQuizResultLog(
+                                                    {
+                                                        _eventValue: true,
+                                                        _tblQuizzesID: quizzesRow.id,
+                                                        _objQuizDetails: quizzesRow
+                                                    }
+                                                )}
+                                                className="ss-frontend-btn-base ss-frontend-btn-action-execute"
+                                                title={ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendQuizzesAnswerYes") }>
+                                                    { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendQuizzesAnswerYes") }
+                                            </a>
+
+                                            <a onClick={() => this.handleQuizResultLog(
+                                                    {
+                                                        _eventValue: false,
+                                                        _tblQuizzesID: quizzesRow.id,
+                                                        _objQuizDetails: quizzesRow
+                                                    }
+                                                )}
+                                                className="ss-frontend-btn-base ss-frontend-btn-action-cancel"
+                                                title={ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendQuizzesAnswerNo") }>
+                                                    { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendQuizzesAnswerNo") }
+                                            </a>
+                                        </div>
+
+
+                                        { /*Options (multiple) - store in DB.*/ }
+                                        <div className="ss-frontend-quizzes-listing-content-row01">
+                                            { quizzesRow.quizzesOptions.map((quizzesOptionsRow, quizzesOptionsRowKey) =>{
+                                                return (
+                                                        //NOTE: For more then one element, necessary key={quizzesOptionsRowKey}.
+                                                    
                                                         <a onClick={() => this.handleQuizResultLog(
                                                                 {
                                                                     _eventValue: quizzesOptionsRow.id, //substitute with option id
@@ -466,23 +503,23 @@ class FrontendQuizzesListingRecord extends Component
                                                                     _objQuizDetails: quizzesRow
                                                                 }
                                                             )}
-                                                            className="ss-frontend-btn-base ss-frontend-btn-action-execute"
+                                                            className="ss-frontend-btn-base ss-frontend-btn-action"
                                                             title={ HTMLReactParser(SyncSystemNS.FunctionsGeneric.contentMaskRead(quizzesOptionsRow.title, "db")) }>
                                                                 { HTMLReactParser(SyncSystemNS.FunctionsGeneric.contentMaskRead(quizzesOptionsRow.title, "db")) }
                                                         </a>
-                                                    </div>
-                                                );
-                                            })
-                                        }
-                                    </div>
-                                </article>
-                            );
-                        }) }
+                                                    );
+                                                })
+                                            }
+                                        </div>
+                                    </article>
+                                );
+                            }) }
+                        </div>
                         
                         { /*Results - quiz answers log.*/ }
-                        <div id={"divQuizResultsLog"} style={{display: "none", marginTop: "15px"}}>
+                        <div id={"divQuizResultsLog"} style={{display: "none"}}>
                             <div>
-                                { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendQuizzesAnswersRight") }:&nbsp;
+                                { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendQuizzesAnswersRight") }:
                                 { this.state.quizAnswersRight } / { arrQuizzesListing.length }
                             </div>
                             <div>
@@ -493,52 +530,48 @@ class FrontendQuizzesListingRecord extends Component
                                         return (
                                             <div key={quizResultsLogKey} 
                                                 className={
-                                                    //quizResultsLogRow.quizAnswerStatus.toString() == quizResultsLogRow.objQuizDetails.id ?
-                                                    quizResultsLogRow.quizAnswerStatus === true ?
+                                                    quizResultsLogRow.quizAnswerStatus.toString() == "true" ?
                                                     `ss-frontend-correct`
                                                     :
-                                                    `ss-frontend-incorrect`
+                                                    `ss-frontend-uncorrect`
                                                 }>
-                                                    { /*HTMLReactParser(quizResultsLogRow.objQuizDetails.question)*/ }
+                                                    { HTMLReactParser(quizResultsLogRow.objQuizDetails.question) }
+                                            </div>
+                                        );
+                                    })
+                                }
+                                
+                                
+                                { /*Debug.*/ }
+                                { /*JSON.stringify(this.state.quizResultsLog)*/ }
+                                {
+                                    //Debug.
+                                    this.state.quizResultsLog.map((quizResultsLogRow, quizResultsLogKey) =>{
+                                        return (
+                                            <div key={quizResultsLogKey}>
+                                                ID: {quizResultsLogRow.tblQuizzesID}
+                                                <br />
+
+                                                Question:
+                                                <div className="ss-frontend-quizzes-listing-subheading01">
                                                     { HTMLReactParser(quizResultsLogRow.objQuizDetails.title) }
+                                                </div>
+                                                
+                                                <br />
+                                                Status: 
+                                                { /*Debug.*/ }
+                                                { quizResultsLogRow.quizAnswerStatus.toString() }
                                             </div>
                                         );
                                     })
                                 }
                             </div>
-                            <div id="divSuccess" className="ss-frontend-success" style={{textAlign: "center", marginBottom: "15px", display: "none"}}>
-                                <FrontendContent key={107} 
-                                    idParentContent={ "107" } 
-                                    idTbContent={ "" } 
-                                    contentType={ "" } 
-                                    configLayoutType={ 2 } 
-                                    configContentNRecords={ "" } 
-                                    configContentSort={ "" }>
-                                </FrontendContent>
-
-                                <a href="http://www.google.com" 
-                                    target="_blank"
-                                    className="ss-frontend-btn-base ss-frontend-btn-action" 
-                                    style={{textAlign: "center", marginTop: "15px"}}>
-                                    { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "backendButtonStart") }
-                                    
-                                </a>
-                            </div>
-                            <div id="divError" className="ss-frontend-error" style={{textAlign: "center", marginBottom: "15px", display: "none"}}>
-                                <FrontendContent key={108} 
-                                    idParentContent={ "108" } 
-                                    idTbContent={ "" } 
-                                    contentType={ "" } 
-                                    configLayoutType={ 2 } 
-                                    configContentNRecords={ "" } 
-                                    configContentSort={ "" }>
-                                </FrontendContent>
-
-                                <a href={"/" + gSystemConfig.configRouteFrontendLogoff + "/"} 
-                                    className="ss-frontend-btn-base ss-frontend-btn-action" 
-                                    style={{textAlign: "center", marginTop: "15px"}}>
-                                    Logoff
-                                </a>
+                            <div>
+                                <button 
+                                    onClick={()=>{ this.handleQuizResultReset() }}
+                                    className="ss-frontend-btn-base ss-frontend-btn-action">
+                                    { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "backendButtonReset") }:
+                                </button>
                             </div>
                         </div>
                     </React.Fragment>

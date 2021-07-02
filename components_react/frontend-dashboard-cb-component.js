@@ -425,7 +425,7 @@ class FrontendDashboard extends Component
         //elementMessage01("titleCurrent", this.titleCurrent); //working
         //console.log("FunctionsSyncSystem=", FunctionsSyncSystem);
         FunctionsSyncSystem.elementMessage01("titleCurrent", this.titleCurrent);
-        FunctionsSyncSystem.elementMessage01("titleCurrentMobile", this.titleCurrent);
+        //FunctionsSyncSystem.elementMessage01("titleCurrentMobile", this.titleCurrent);
     }
     //**************************************************************************************
     
@@ -436,7 +436,7 @@ class FrontendDashboard extends Component
     {
         //Variables.
         //----------------------
-        const { gSystemConfig, SyncSystemNS, FunctionsSyncSystem, qs } = this.context;
+        const { gSystemConfig, SyncSystemNS, FunctionsSyncSystem, qs, HTMLReactParser } = this.context;
 
         let objRegistersDetails = this.objRegistersDetails;
         //----------------------
@@ -465,8 +465,104 @@ class FrontendDashboard extends Component
                 <strong>
                 { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendDashboardWelcome") }
                 </strong>
-                { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendDashboardLoginMessage01") }: 
+                <br />
+                { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendDashboardLoginMessage01") }:&nbsp;
                 { objRegistersDetails.tblRegistersNameFull }
+
+
+                { /*Register logged details.*/ }
+                <div>
+                    { gSystemConfig.enableRegistersImageMain == 1 ? 
+                        <figure className="ss-frontend-dashboard-details-image01-container">
+                            { objRegistersDetails.tblRegistersImageMain != "" ?
+                                <React.Fragment>
+                                    { /*No pop-up.*/ }
+                                    { gSystemConfig.configImagePopup == 0 ? 
+                                        <img src={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesSD + "/r" + objRegistersDetails.tblRegistersImageMain } 
+                                            alt={objRegistersDetails.tblRegistersImageMainCaption != "" ?
+                                                    objRegistersDetails.tblRegistersImageMainCaption 
+                                                :
+                                                    objRegistersDetails.tblRegistersTitle 
+                                                } 
+                                            className="ss-frontend-dashboard-details-image01" />
+                                        : ``
+                                    }
+
+                                    { /*GLightbox.*/ }
+                                    { /*TODO: Not working.*/ }
+                                    { /*Research: https://www.npmjs.com/package/react-image-lightbox.*/ }
+                                    { gSystemConfig.configImagePopup == 4 ? 
+                                        <React.Fragment>
+                                            <a href={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesSD + "/g" + objRegistersDetails.tblRegistersImageMain }
+                                                title={ objRegistersDetails.tblRegistersTitle } 
+                                                className="glightbox_dashboard_image_main"
+                                                data-glightbox={objRegistersDetails.tblRegistersImageMainCaption != "" ?
+                                                                    "title:" + objRegistersDetails.tblRegistersImageMainCaption + ";"
+                                                                :
+                                                                    "title:" + objRegistersDetails.tblRegistersTitle + ";"
+                                                                }>
+                                                <img src={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesSD + "/r" + objRegistersDetails.tblRegistersImageMain } 
+                                                    alt={objRegistersDetails.tblRegistersImageMainCaption != "" ?
+                                                                objRegistersDetails.tblRegistersImageMainCaption 
+                                                        :
+                                                                objRegistersDetails.tblRegistersTitle 
+                                                        } 
+                                                    className="ss-frontend-dashboard-details-image01" />
+                                            </a>
+                                            { HTMLReactParser(`
+                                                <script type="text/babel">
+                                                //$(document).ready(function() {
+                                                    gLightboxBackendConfigOptions.selector = "glightbox_dashboard_image_main";
+                                                    var glightboxRegistersImageMain = GLightbox(gLightboxBackendConfigOptions);
+                                                //});
+                                                </script>
+                                            `) }
+                                        </React.Fragment>
+                                        : ``
+                                    }
+                                </React.Fragment>
+                            :
+                                <React.Fragment>
+                                    { /*Placeholder.*/ }
+                                    { gSystemConfig.configRegistersImagePlaceholder == 1 ? 
+                                        <img src={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesLayoutSD + "/frontend-layout-image-placeholder-t0.png" } 
+                                            alt={objRegistersDetails.tblRegistersImageMainCaption != "" ?
+                                                    objRegistersDetails.tblRegistersImageMainCaption 
+                                                :
+                                                    objRegistersDetails.tblRegistersTitle 
+                                                } 
+                                            className="ss-frontend-dashboard-details-image01" />
+                                        : ``
+                                    }
+                                </React.Fragment>
+                            }
+                            
+                            { /*Main image caption.*/ }
+                            { gSystemConfig.enableRegistersImageMainCaption == 1 ? 
+                                <figcaption>
+                                    { objRegistersDetails.tblRegistersImageMainCaption }
+                                </figcaption>
+                            :
+                                ``
+                            }
+                        </figure>
+                    :
+                        ``
+                    }
+                    <div className="ss-frontend-dashboard-text01" style={{textAlign: "center"}}>
+                        { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "backendRegistersDocument") }: 
+                        { objRegistersDetails.tblRegistersDocument }
+                    </div>
+                </div>
+
+
+                <div style={{textAlign: "center", marginTop: "50px"}}>
+                    <a className="ss-frontend-btn-base ss-frontend-btn-action"
+                        href={"/" + gSystemConfig.configRouteFrontendQuizzes + "/105/"} 
+                        title={"COVID-19 Check"}>
+                        COVID-19 Check
+                    </a>
+                </div>
             </section>
         );
     }

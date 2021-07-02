@@ -143,7 +143,7 @@ input, textarea, select
 	position: absolute; 
 	display: block; 
 	left: 50%; 
-	top: 50px; 
+	top: 50%; 
 	transform: translate(-50%, -50%); 
 }
 .ss-frontend-layout-footer01 {
@@ -159,7 +159,7 @@ input, textarea, select
 	display: flex; 
 	flex: 1; 
 	align-items: stretch; 
-	/* width: 1015px; */ 
+	max-width: 800px;
 
 	margin-left: auto; 
 	margin-right: auto;
@@ -389,6 +389,8 @@ input, textarea, select
 .ss-frontend-layout-section-content01 {
 	position: relative; 
 	display: block; 
+
+	/* max-width: 800px; */
 	overflow: hidden; 
 }
 
@@ -457,7 +459,7 @@ input, textarea, select
 	margin-bottom: 1px;
 	padding: 3px;
 }
-.ss-frontend-uncorrect {
+.ss-frontend-incorrect {
 	position: relative;
 	display: block;
 
@@ -509,6 +511,7 @@ input, textarea, select
 .ss-frontend-btn-action:hover {
 	color: #ffffff !important;
 	background-color: #f7941d; 
+	text-decoration: none;
 }
 
 .ss-frontend-btn-action-alert {
@@ -519,6 +522,7 @@ input, textarea, select
 .ss-frontend-btn-action-alert:hover {
 	color: #ffffff !important;
 	background-color: #42464b; 
+	text-decoration: none;
 }
 
 .ss-frontend-btn-action-cancel {
@@ -529,6 +533,7 @@ input, textarea, select
 .ss-frontend-btn-action-cancel:hover {
 	color: #ffffff !important;
 	background-color: #f7941d; 
+	text-decoration: none;
 }
 
 .ss-frontend-btn-action-execute {
@@ -539,6 +544,7 @@ input, textarea, select
 .ss-frontend-btn-action-execute:hover {
 	color: #ffffff !important;
 	background-color: #f7941d; 
+	text-decoration: none;
 }
 
 .ss-frontend-btn-generic-bg01 {
@@ -1228,7 +1234,7 @@ input, textarea, select
 
     font-family: var(--ssFrontendDefaultFont);
 	font-size: var(--ssFrontendDefaultFontSize);
-	line-height: 17px;
+	line-height: 26px;
 	font-weight: normal;
 	color: #42464b;
 
@@ -2344,7 +2350,7 @@ input, textarea, select
 
 	vertical-align: top;
 
-	margin: 0px 0px 10px 0px; 
+	margin: 0px 0px 0px 0px; 
 	padding: 0px; 
 }
 /*
@@ -3384,7 +3390,20 @@ input, textarea, select
 
 .ss-frontend-dashboard-field-deactivated {
     background: #cccccc;
-}/* ************************************************************************************** */
+}
+
+
+.ss-frontend-dashboard-details-image01-container {
+	position: relative; 
+	display: block; 
+
+	width: 100%;
+
+	text-align: center; 
+
+	overflow: hidden;
+}
+/* ************************************************************************************** */
 
 
 /*Bootstrap.*/

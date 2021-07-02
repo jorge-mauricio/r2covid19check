@@ -470,7 +470,7 @@ class FrontendQuizzesListing extends Component
 
         //Title Current.
         FunctionsSyncSystem.elementMessage01("titleCurrent", this.titleCurrent);
-        FunctionsSyncSystem.elementMessage01("titleCurrentMobile", this.titleCurrent);
+        //FunctionsSyncSystem.elementMessage01("titleCurrentMobile", this.titleCurrent);
     }
     //**************************************************************************************
     
