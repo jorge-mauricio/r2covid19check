@@ -477,7 +477,7 @@ module.exports = class QuizzesOptionsListing
 
                                     ${ gSystemConfig.enableQuizzesOptionsImageMain == 1 ? 
                                     `
-                                        <td style="width: 100px; text-align: center;">
+                                        <td style="width: 100px; text-align: center; display: none;">
                                             ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemImage") }  
                                         </td>
                                     ` : ``
@@ -522,7 +522,7 @@ module.exports = class QuizzesOptionsListing
 
                                         ${ gSystemConfig.enableQuizzesOptionsImageMain == 1 ? 
                                         `
-                                        <td style="text-align: center;">
+                                        <td style="text-align: center; display: none;">
                                             ${ quizzesOptionsRow.image_main !== "" ? 
                                             `
                                                 ${ /*No pop-up.*/'' }

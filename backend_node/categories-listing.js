@@ -715,7 +715,7 @@ module.exports = class CategoriesListing
 
                                     ${ gSystemConfig.enableCategoriesImageMain == 1 ? 
                                     `
-                                    <td style="width: 100px; text-align: center;">
+                                    <td style="width: 100px; text-align: center; display: none;">
                                         ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemImage") }  
                                     </td>
                                     ` : ``
@@ -806,7 +806,7 @@ module.exports = class CategoriesListing
 
                                         ${ gSystemConfig.enableCategoriesImageMain == 1 ? 
                                         `
-                                        <td style="text-align: center;">
+                                        <td style="text-align: center; display: none;">
                                             ${ categoriesRow.image_main !== "" ? 
                                             `
                                                 ${ /*No pop-up.*/'' }
@@ -1695,9 +1695,9 @@ module.exports = class CategoriesListing
                                                 `
                                             } 
 
-                                            <a href="/${ gSystemConfig.configRouteBackend + "/" + gSystemConfig.configRouteBackendCategories + "/" + gSystemConfig.configRouteBackendDetails + "/" + categoriesRow.id }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">
+                                            <!--a href="/${ gSystemConfig.configRouteBackend + "/" + gSystemConfig.configRouteBackendCategories + "/" + gSystemConfig.configRouteBackendDetails + "/" + categoriesRow.id }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">
                                                 ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemDetailsView") }
-                                            </a> 
+                                            </a--> 
                                             <!--a href="/${ gSystemConfig.configRouteFrontend + "/" + gSystemConfig.configRouteFrontendCategories + "/" + gSystemConfig.configRouteFrontendDetails + "/" + categoriesRow.id }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">
                                                 ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemDetailsView") }
                                             </a--> ${ /*TODO: Change address to access frontend.*/ '' }

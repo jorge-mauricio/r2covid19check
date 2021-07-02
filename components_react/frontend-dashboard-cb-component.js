@@ -461,7 +461,7 @@ class FrontendDashboard extends Component
 
         //Output.
         return(
-            <section className="ss-frontend-layout-section-content01 ss-frontend-dashboard-text01">
+            <section className="ss-frontend-layout-section-content01 ss-frontend-dashboard-text01" style={{textAlign: "center"}}>
                 <strong>
                 { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "frontendDashboardWelcome") }
                 </strong>
@@ -478,7 +478,7 @@ class FrontendDashboard extends Component
                                 <React.Fragment>
                                     { /*No pop-up.*/ }
                                     { gSystemConfig.configImagePopup == 0 ? 
-                                        <img src={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesSD + "/r" + objRegistersDetails.tblRegistersImageMain } 
+                                        <img src={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesSD + "/t" + objRegistersDetails.tblRegistersImageMain } 
                                             alt={objRegistersDetails.tblRegistersImageMainCaption != "" ?
                                                     objRegistersDetails.tblRegistersImageMainCaption 
                                                 :
@@ -501,7 +501,7 @@ class FrontendDashboard extends Component
                                                                 :
                                                                     "title:" + objRegistersDetails.tblRegistersTitle + ";"
                                                                 }>
-                                                <img src={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesSD + "/r" + objRegistersDetails.tblRegistersImageMain } 
+                                                <img src={ gSystemConfig.configFrontendReactURLImages + gSystemConfig.configDirectoryFilesSD + "/t" + objRegistersDetails.tblRegistersImageMain } 
                                                     alt={objRegistersDetails.tblRegistersImageMainCaption != "" ?
                                                                 objRegistersDetails.tblRegistersImageMainCaption 
                                                         :
@@ -549,14 +549,14 @@ class FrontendDashboard extends Component
                     :
                         ``
                     }
-                    <div className="ss-frontend-dashboard-text01" style={{textAlign: "center"}}>
+                    <div className="ss-frontend-dashboard-text01">
                         { SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageFrontend.appLabels, "backendRegistersDocument") }: 
                         { objRegistersDetails.tblRegistersDocument }
                     </div>
                 </div>
 
 
-                <div style={{textAlign: "center", marginTop: "50px"}}>
+                <div style={{textAlign: "center", margin: "20px 0px"}}>
                     <a className="ss-frontend-btn-base ss-frontend-btn-action"
                         href={"/" + gSystemConfig.configRouteFrontendQuizzes + "/105/"} 
                         title={"COVID-19 Check"}>

@@ -55,6 +55,8 @@ class FrontendQuizzesListingRecord extends Component
         this.idTbRegistersLoggedCrypt = "";
         this.idTbRegistersLogged = "";
 
+        this.quizCheck = true;
+
 
         //State creation.
         /**/
@@ -191,8 +193,6 @@ class FrontendQuizzesListingRecord extends Component
         let quizAnswerStatus = false;
         let tblQuizzesID = "";
         let divQuizID = "";
-
-        let quizCheck = true;
         //----------------------
 
 
@@ -211,7 +211,7 @@ class FrontendQuizzesListingRecord extends Component
             quizAnswerStatus = true;
             countQuizAnswersRight++;
         }else{
-            quizCheck = false;
+            this.quizCheck = false;
         }
 
         //Insert log in array.
@@ -241,9 +241,12 @@ class FrontendQuizzesListingRecord extends Component
         {
             //Show results.
             FunctionsSyncSystem.htmlGenericStyle01('divQuizResultsLog', 'display', 'block');
-            if(quizCheck === false)
+            if(this.quizCheck === false)
             {
                 FunctionsSyncSystem.htmlGenericStyle01('divError', 'display', 'block');
+
+                //Delete cookie.
+                FunctionsSyncSystem.cookieDelete(gSystemConfig.configCookiePrefix + "_" + "quizCheck", gSystemConfig.configCookieDefaultOptions);
             }else{
                 FunctionsSyncSystem.htmlGenericStyle01('divSuccess', 'display', 'block');
 
@@ -506,7 +509,7 @@ class FrontendQuizzesListingRecord extends Component
                                     })
                                 }
                             </div>
-                            <div id="divSuccess" className="ss-frontend-success" style={{textAlign: "center", marginBottom: "15px", display: "none"}}>
+                            <div id="divSuccess" className="ss-frontend-success" style={{textAlign: "center", marginBottom: "15px", display: "none", padding: "0px 4px"}}>
                                 <FrontendContent key={107} 
                                     idParentContent={ "107" } 
                                     idTbContent={ "" } 

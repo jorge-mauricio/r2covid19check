@@ -499,7 +499,7 @@ module.exports = class ContentListing
                                         ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendContentContentText") }  
                                     </td>
 
-                                    <td style="width: 100px; text-align: center;">
+                                    <td style="width: 100px; text-align: center; display: none;">
                                         ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemFunctions") }  
                                     </td>
 
@@ -969,7 +969,7 @@ module.exports = class ContentListing
                                             ${ /*----------------------*/ '' }
                                         </td>
 
-                                        <td style="text-align: center;">
+                                        <td style="text-align: center; display: none;">
                                             ${ /*TODO: Change address to id_parent and develop categories details with content type description and content.*/ '' }
                                             <a href="/${ gSystemConfig.configRouteBackend + "/" + gSystemConfig.configRouteBackendContent + "/" + gSystemConfig.configRouteBackendDetails + "/" + contentRow.id }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">
                                                 ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemDetailsView") }

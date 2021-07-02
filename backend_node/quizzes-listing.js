@@ -529,7 +529,7 @@ module.exports = class QuizzesListing
 
                                     ${ gSystemConfig.enableQuizzesImageMain == 1 ? 
                                     `
-                                    <td style="width: 100px; text-align: center;">
+                                    <td style="width: 100px; text-align: center; display: none;">
                                         ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemImage") }  
                                     </td>
                                     ` : ``
@@ -620,7 +620,7 @@ module.exports = class QuizzesListing
 
                                         ${ gSystemConfig.enableQuizzesImageMain == 1 ? 
                                         `
-                                        <td style="text-align: center;">
+                                        <td style="text-align: center; display: none;">
                                             ${ quizzesRow.image_main !== "" ? 
                                             `
                                                 ${ /*No pop-up.*/'' }
@@ -661,9 +661,9 @@ module.exports = class QuizzesListing
                                         <td style="text-align: center;">
                                             ${ /*SyncSystemNS.FunctionsGeneric.categoryConfigSelect(quizzesRow.category_type, 4)*/'' }
                                             
-                                            <a href="/${ gSystemConfig.configRouteBackend + "/" + gSystemConfig.configRouteBackendQuizzes + "/" + gSystemConfig.configRouteBackendDetails + "/" + quizzesRow.id + "/" }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">
+                                            <!--a href="/${ gSystemConfig.configRouteBackend + "/" + gSystemConfig.configRouteBackendQuizzes + "/" + gSystemConfig.configRouteBackendDetails + "/" + quizzesRow.id + "/" }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">
                                                 ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemDetailsView") }
-                                            </a> 
+                                            </a--> 
                                             <!--a href="/${ gSystemConfig.configRouteFrontend + "/" + gSystemConfig.configRouteFrontendQuizzes + "/" + gSystemConfig.configRouteFrontendDetails + "/" + quizzesRow.id + "/" }" target="_blank" class="ss-backend-links01" style="position: relative; display: block;">
                                                 ${ SyncSystemNS.FunctionsGeneric.appLabelsGet(gSystemConfig.configLanguageBackend.appLabels, "backendItemDetailsView") }
                                             </a--> ${ /*TODO: Change address to access frontend.*/ '' }

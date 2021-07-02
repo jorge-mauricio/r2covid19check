@@ -814,7 +814,7 @@ exports.appLabels = {
     backendRegistersWeight: "Weight",
     
     backendRegistersDocumentType: "Document Type",
-    backendRegistersDocument: "Nº Crachá",
+    backendRegistersDocument: "Badge Nº", //Nº Crachá
     backendRegistersDocument1Type: "Document 1 Type",
     backendRegistersDocument1: "Document 1",
     backendRegistersDocument2Type: "Document 2 Type",
